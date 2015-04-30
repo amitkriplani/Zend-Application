@@ -1,0 +1,10 @@
+<ul>
+    <?php foreach ($this->form->getMessages() as $message) : ?>
+        <?php if (is_string($message)): ?>
+            <li>
+                <?php echo substr($message, ((int) strrpos($message, ':')) + 1); ?>
+            </li>
+        <?php endif; ?>
+    <?php endforeach; ?>
+</ul>
+<?php echo $this->form; ?>

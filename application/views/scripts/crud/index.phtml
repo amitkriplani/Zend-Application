@@ -1,0 +1,39 @@
+<a href="<?php echo $this->url(array('action' => 'add')) ?>">Add more</a>
+<br />
+<?php if ($this->data): ?>
+    <table class="datatable">
+        <thead>
+            <?php foreach (array_keys($this->data[0]) as $head): ?>
+            <th><?php echo $head; ?></th>
+        <?php endforeach; ?>
+        <td>Actions</td>
+    </thead>
+    <tbody>
+        <?php foreach ($this->data as $row): ?>
+            <tr>
+                <?php foreach ($row as $head => $val): ?>
+                    <td><?php echo $val; ?></td>
+                <?php endforeach; ?>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="<?php echo $this->url(array('action' => 'view', 'id' => $row[$this->pk])) ?>">View</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $this->url(array('action' => 'edit', 'id' => $row[$this->pk])) ?>">Edit</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $this->url(array('action' => 'copy', 'id' => $row[$this->pk])) ?>">Copy</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $this->url(array('action' => 'delete', 'id' => $row[$this->pk])) ?>">Delete</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+    </table>
+<?php else: ?>
+    No data available.
+<?php endif; ?>
